@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bete Esteves</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"><img src="img/logo.png" alt="Logo" class="logo-header" /></a>
+      <span class="d-none d-lg-block ms-auto email-header">beteaesteves@gmail.com</span>
+      <button class="navbar-toggler" style="display: none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+        <span class="custom-toggler-icon"><span class="dot"></span></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        </ul>
+      </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-fluid mt-3">
+    <div class="row">
+      <div class="col-lg-3" id="categoryFilter">
+        <h5 class="d-none d-lg-block">Filtro</h5>
+        <ul class="list-unstyled">
+          <li><button class="filter-toggle" data-category="ambiencia">Ambiência</button></li>
+          <li><button class="filter-toggle" data-category="atmosfera">Atmosfera</button></li>
+          <li><button class="filter-toggle" data-category="desenho">Desenho</button></li>
+          <li><button class="filter-toggle" data-category="ecologia">Ecologia</button></li>
+          <li><button class="filter-toggle" data-category="espacos-expositivos">Espaços Expositivos</button></li>
+          <li><button class="filter-toggle" data-category="experimentacao">Experimentação</button></li>
+          <li><button class="filter-toggle" data-category="fotografia">Fotografia</button></li>
+          <li><button class="filter-toggle" data-category="grupalidade">Grupalidade</button></li>
+          <li><button class="filter-toggle" data-category="instalacao">Instalação</button></li>
+          <li><button class="filter-toggle" data-category="interativa">Interativa</button></li>
+          <li><button class="filter-toggle" data-category="laboratorio-ambiental">Laboratório Ambiental</button></li>
+          <li><button class="filter-toggle" data-category="maquinas">Máquinas</button></li>
+          <li><button class="filter-toggle" data-category="ocupacao-artistica">Ocupação Artística</button></li>
+          <li><button class="filter-toggle" data-category="performance">Performance</button></li>
+          <li><button class="filter-toggle" data-category="permacultura">Permacultura</button></li>
+          <li><button class="filter-toggle" data-category="processos-criativos">Processos Criativos</button></li>
+          <li><button class="filter-toggle" data-category="realidade-expandida">Realidade Expandida</button></li>
+          <li><button class="filter-toggle" data-category="relacao-arte-espectador">Relação Arte Espectador</button></li>
+        </ul>
+      </div>
+      <div class="col-lg-9" id="gallery">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-xl-3 g-3">
+          <div class="col item" data-categories="ambiencia,atmosfera">
+            <a href="post.html" class="gallery-item-container">
+              <img src="img/img1.jpg" class="img-fluid" alt="Trabalho 1" />
+              <div class="d-flex align-items-end mt-2 gallery-caption-row">
+                <span class="gallery-title flex-grow-1 text-start">Título 1</span>
+                <span class="gallery-plus mx-2">+</span>
+                <span class="gallery-year flex-shrink-0">2021</span>
+              </div>
+            </a>
+          </div>
+          <div class="col item" data-categories="desenho,espacos-expositivos">
+            <a href="post.html" class="gallery-item-container">
+              <img src="img/img2.jpg" class="img-fluid" alt="Trabalho 2" />
+              <div class="d-flex align-items-end mt-2 gallery-caption-row">
+                <span class="gallery-title flex-grow-1 text-start">Título 2</span>
+                <span class="gallery-plus mx-2">+</span>
+                <span class="gallery-year flex-shrink-0">2022</span>
+              </div>
+            </a>
+          </div>
+          <div class="col item" data-categories="experimentacao,fotografia">
+            <a href="post.html" class="gallery-item-container">
+              <img src="img/img3.jpg" class="img-fluid" alt="Trabalho 3" />
+              <div class="d-flex align-items-end mt-2 gallery-caption-row">
+                <span class="gallery-title flex-grow-1 text-start">Título 3</span>
+                <span class="gallery-plus mx-2">+</span>
+                <span class="gallery-year flex-shrink-0">2020</span>
+              </div>
+            </a>
+          </div>
+          <div class="col item" data-categories="grupalidade,instalacao">
+            <a href="post.html" class="gallery-item-container">
+              <img src="img/img4.jpg" class="img-fluid" alt="Trabalho 4" />
+              <div class="d-flex align-items-end mt-2 gallery-caption-row">
+                <span class="gallery-title flex-grow-1 text-start">Título 4</span>
+                <span class="gallery-plus mx-2">+</span>
+                <span class="gallery-year flex-shrink-0">2019</span>
+              </div>
+            </a>
+          </div>
+          <div class="col item" data-categories="interativa,laboratorio-ambiental">
+            <a href="post.html" class="gallery-item-container">
+              <img src="img/img5.jpg" class="img-fluid" alt="Trabalho 5" />
+              <div class="d-flex align-items-end mt-2 gallery-caption-row">
+                <span class="gallery-title flex-grow-1 text-start">Título 5</span>
+                <span class="gallery-plus mx-2">+</span>
+                <span class="gallery-year flex-shrink-0">2023</span>
+              </div>
+            </a>
+          </div>
+          <div class="col item" data-categories="maquinas,ocupacao-artistica">
+            <a href="post.html" class="gallery-item-container">
+              <img src="img/img6.jpg" class="img-fluid" alt="Trabalho 6" />
+              <div class="d-flex align-items-end mt-2 gallery-caption-row">
+                <span class="gallery-title flex-grow-1 text-start">Título 6</span>
+                <span class="gallery-plus mx-2">+</span>
+                <span class="gallery-year flex-shrink-0">2021</span>
+              </div>
+            </a>
+          </div>
+          <div class="col item" data-categories="performance,permacultura">
+            <a href="post.html" class="gallery-item-container">
+              <img src="img/img7.jpg" class="img-fluid" alt="Trabalho 7" />
+              <div class="d-flex align-items-end mt-2 gallery-caption-row">
+                <span class="gallery-title flex-grow-1 text-start">Título 7</span>
+                <span class="gallery-plus mx-2">+</span>
+                <span class="gallery-year flex-shrink-0">2022</span>
+              </div>
+            </a>
+          </div>
+          <div class="col item" data-categories="processos-criativos,realidade-expandida">
+            <a href="post.html" class="gallery-item-container">
+              <img src="img/img8.jpg" class="img-fluid" alt="Trabalho 8" />
+              <div class="d-flex align-items-end mt-2 gallery-caption-row">
+                <span class="gallery-title flex-grow-1 text-start">Título 8</span>
+                <span class="gallery-plus mx-2">+</span>
+                <span class="gallery-year flex-shrink-0">2020</span>
+              </div>
+            </a>
+          </div>
+          <div class="col item" data-categories="relacao-arte-espectador,ambiencia">
+            <a href="post.html" class="gallery-item-container">
+              <img src="img/img9.jpg" class="img-fluid" alt="Trabalho 9" />
+              <div class="d-flex align-items-end mt-2 gallery-caption-row">
+                <span class="gallery-title flex-grow-1 text-start">Título 9</span>
+                <span class="gallery-plus mx-2">+</span>
+                <span class="gallery-year flex-shrink-0">2019</span>
+              </div>
+            </a>
+          </div>
+          <div class="col item" data-categories="atmosfera,desenho">
+            <a href="post.html" class="gallery-item-container">
+              <img src="img/img10.jpg" class="img-fluid" alt="Trabalho 10" />
+              <div class="d-flex align-items-end mt-2 gallery-caption-row">
+                <span class="gallery-title flex-grow-1 text-start">Título 10</span>
+                <span class="gallery-plus mx-2">+</span>
+                <span class="gallery-year flex-shrink-0">2023</span>
+              </div>
+            </a>
+          </div>
+          <div class="col item" data-categories="espacos-expositivos,experimentacao">
+            <a href="post.html" class="gallery-item-container">
+              <img src="img/img11.jpg" class="img-fluid" alt="Trabalho 11" />
+              <div class="d-flex align-items-end mt-2 gallery-caption-row">
+                <span class="gallery-title flex-grow-1 text-start">Título 11</span>
+                <span class="gallery-plus mx-2">+</span>
+                <span class="gallery-year flex-shrink-0">2021</span>
+              </div>
+            </a>
+          </div>
+          <div class="col item" data-categories="fotografia,grupalidade">
+            <a href="post.html" class="gallery-item-container">
+              <img src="img/img12.jpg" class="img-fluid" alt="Trabalho 12" />
+              <div class="d-flex align-items-end mt-2 gallery-caption-row">
+                <span class="gallery-title flex-grow-1 text-start">Título 12</span>
+                <span class="gallery-plus mx-2">+</span>
+                <span class="gallery-year flex-shrink-0">2022</span>
+              </div>
+            </a>
+          </div>
+          <div class="col item" data-categories="instalacao,interativa">
+            <a href="post.html" class="gallery-item-container">
+              <img src="img/img13.jpg" class="img-fluid" alt="Trabalho 13" />
+              <div class="d-flex align-items-end mt-2 gallery-caption-row">
+                <span class="gallery-title flex-grow-1 text-start">Título 13</span>
+                <span class="gallery-plus mx-2">+</span>
+                <span class="gallery-year flex-shrink-0">2020</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="back-to-top-container" style="width:100%;text-align:center;margin:40px 0 20px 0;">
+    <button id="back-to-top">
+      <span class="back-to-top-arrow">↑</span>
+      <span class="back-to-top-text">voltar</span>
+    </button>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
