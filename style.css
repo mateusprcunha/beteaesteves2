@@ -109,6 +109,8 @@ select, textarea {
   line-height: 1.1;
   margin: 120px auto;
   max-width: 500px;
+  padding-left: 20px;
+  padding-right: 20px;;
 }
 
 .post-meta,
@@ -154,7 +156,7 @@ main.post-content {
 
 @media (max-width: 576px) {
   .post-image {
-    padding: 0 10px;
+    padding: 0 20px;
   }
 }
 
@@ -451,6 +453,11 @@ a:focus {
     display: none;
     margin-top: 10px;
   }
+
+  .post-content {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 }
 
 @media (max-width: 575.98px) {
@@ -460,6 +467,7 @@ a:focus {
     height: auto;
     max-width: 40vw;
   }
+  
 }
 
 /* ==========================================================================
