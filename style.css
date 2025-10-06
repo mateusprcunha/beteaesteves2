@@ -41,13 +41,183 @@ select, textarea {
   margin-left: 15px;
 }
 
-.email-header {
+/* NAV: quatro blocos equidistantes, primeiro e último encostam nas extremidades */
+
+.nav-row {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0;
+  gap: 0;
+}
+
+/* Mobile nav toggle button and panel */
+.mobile-nav-toggle {
+  background: transparent;
+  border: none;
+  font-size: 1.6rem;
+  line-height: 1;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+.mobile-nav-menu {
+  position: fixed;
+  inset: 0; /* full screen */
+  background: #fff;
+  padding: 40px 28px 28px 28px;
+  display: none;
+  z-index: 20000;
+  overflow-y: auto;
+}
+.mobile-nav-menu.show {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* Close button top-right */
+.mobile-nav-menu .mobile-close {
   position: absolute;
-  right: 32px;
-  top: 50%;
-  transform: translateY(-50%);
+  right: 18px;
+  top: 18px;
+  background: transparent;
+  border: none;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+/* Vertical center menu list */
+.mobile-nav-menu .mobile-main-menu {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3.2rem;
+  margin-top: 4rem;
+  margin-bottom: 2.5rem;
+}
+.mobile-nav-menu .mobile-main-menu a {
+  font-family: 'Turnery', Arial, sans-serif;
+  font-size: 1.6rem;
+  letter-spacing: 0.18em;
+  text-transform: lowercase;
+  color: #111;
+  text-decoration: none;
+  padding: 8px 0;
+}
+
+.mobile-nav-menu .mobile-separator {
+  width: 100%;
+  height: 1px;
+  background: #dcdcdc;
+  margin: 18px 0;
+}
+
+.mobile-nav-menu .mobile-email {
+  width: 100%;
+  text-align: center;
+  margin-top: 18px;
+  color: #222;
+}
+
+/* keep mobile elements hidden on large screens */
+
+/* Only show mobile toggle under lg; on lg+ keep hidden (we have full menu) */
+@media (min-width: 992px) {
+  .mobile-menu-block { display: none !important; }
+  .mobile-nav-menu { display: none !important; }
+}
+
+/* Remove the default horizontal padding Bootstrap adds to .container-fluid inside the navbar
+   so the first and last nav-block can touch the viewport edges exactly */
+.navbar {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* Add horizontal padding to the navbar container so the first/last blocks don't touch the absolute viewport edge */
+.navbar > .container-fluid {
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.nav-block {
+  flex: 1 1 0%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 64px;
+  padding: 0 12px;
+}
+
+/* Force first block flush-left and last block flush-right */
+.nav-block.brand { justify-content: flex-start; padding-left: 0; }
+.nav-block.lang-block { justify-content: flex-end; padding-right: 0; margin-left: auto; }
+
+.email-header {
   font-size: 0.95rem;
   color: #555;
+}
+
+/* Main menu (centred block) */
+.main-menu-list,
+.lang-menu-list {
+  list-style: none;
+  display: flex;
+  gap: 18px;
+  margin: 0;
+  padding: 0;
+}
+
+.main-menu-list .nav-link,
+.lang-menu-list .nav-link {
+  color: inherit;
+  text-transform: lowercase;
+  font-weight: 600;
+  padding: 6px 8px;
+}
+
+/* Force uppercase only for the language menu (bloco 4) */
+.lang-block .lang-menu-list .nav-link {
+  text-transform: uppercase;
+}
+
+/* Slightly smaller language links (PT / ENG) */
+.lang-block .lang-menu-list .nav-link {
+  font-size: 0.85rem;
+  padding: 4px 6px;
+}
+
+.main-menu-list .nav-link:hover,
+.lang-menu-list .nav-link:hover {
+  text-decoration: underline;
+}
+
+/* Reduce logo margin on large screens so it hugs the left edge */
+@media (min-width: 992px) {
+  .logo-header { margin-left: 0; }
+}
+
+/* Small screens: stack or compact the nav */
+@media (max-width: 991.98px) {
+  /* keep header items on one line; allow blocks to shrink instead of wrapping */
+  .nav-row { flex-wrap: nowrap; }
+  .nav-block { flex: 0 1 auto; justify-content: center; padding: 8px; min-width: 0; }
+  .nav-block.brand { justify-content: flex-start; padding-left: 0; }
+  .nav-block.lang-block { justify-content: center; padding-right: 0; margin-left: auto; }
+
+  /* Hide main menu on small screens (below lg); keep email visible */
+  .nav-block.main-menu {
+    display: none !important;
+  }
+
+  /* Hide the email in the top nav on small screens. The mobile full-screen menu
+     will include the email below the links (built by JS), so we only show the
+     email inline on lg+ */
+  .nav-block.email-block {
+    display: none !important;
+  }
 }
 
 /* ==========================================================================
@@ -112,6 +282,565 @@ select, textarea {
   padding-left: 20px;
   padding-right: 20px;;
 }
+
+/* Reduce BIO title size only inside the left bio box */
+.bio-box .post-title {
+  font-size: 1.6rem; /* smaller than global post titles */
+  line-height: 1.15;
+  margin: 0 0 120px 0; /* tripled space below BIO as requested */
+  max-width: none;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* Make accordion headers in the side-box match the BIO title style */
+.side-box .accordion-button {
+  font-family: 'TrizP-Light', Arial, sans-serif !important;
+  font-size: 1.6rem !important;
+  line-height: 1.15;
+  text-transform: uppercase !important;
+  padding-top: 5.2rem; /* doubled vertical spacing for accordion titles */
+  padding-bottom: 5.2rem;
+  min-height: 144px; /* doubled height to match request */
+  display: flex;
+  justify-content: center; /* center the header text */
+  align-items: center; /* vertically center the header content */
+  text-align: center;
+  position: relative; /* allow absolute pseudo-elements at left/right */
+  padding-left: 2.5rem; /* space for left symbol */
+  padding-right: 2.5rem; /* space for right symbol */
+}
+
+/* End accordion header styles */
+
+/* Visual adjustments to match open/closed example */
+.side-box .accordion-item {
+  margin-bottom: 0; /* removed vertical gap between items */
+}
+/* Draw a top border only on items that follow another item -> lines between items */
+.side-box .accordion-item + .accordion-item {
+  /* remove in-flow border; we'll draw the separator visually with a pseudo-element
+     so it can extend beyond the column without affecting layout */
+  border-top: none;
+  position: relative;
+}
+
+.side-box .accordion-item + .accordion-item::before {
+  content: '';
+  position: absolute;
+  left: 2rem; /* moved right to align with inner box */
+  right: 0;
+  top: 0;
+  height: 2px; /* separator thickness */
+  background: #e9e9e9;
+  display: block;
+  z-index: 0;
+}
+
+@media (min-width: 992px) {
+  .side-box .accordion-item + .accordion-item::before {
+    left: 2.5rem; /* moved right on lg to align with inner box */
+    right: 0;
+  }
+}
+
+/* Ensure no top border above the very first accordion item */
+.side-box .accordion-item:first-child {
+  border-top: none;
+}
+
+/* Replace bootstrap caret with + when closed and × when open (larger, aligned right) */
+.side-box .accordion-button::after {
+  /* right-side symbol */
+  content: '+';
+  font-family: 'TrizP-Light', Arial, sans-serif;
+  font-size: 1.4rem;
+  color: #111;
+  line-height: 1;
+  transform: none !important;
+  background: none !important;
+  background-image: none !important;
+  position: absolute;
+  right: 2rem; /* default offset from right edge */
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-block;
+}
+.side-box .accordion-button:not(.collapsed)::after {
+  content: '×';
+}
+
+/* left-side symbol: mirrors the right symbol and matches state */
+.side-box .accordion-button::before {
+  content: '+';
+  font-family: 'TrizP-Light', Arial, sans-serif;
+  font-size: 1.4rem;
+  color: #111;
+  line-height: 1;
+  background: none !important;
+  background-image: none !important;
+  position: absolute;
+  left: 2rem; /* align with separator/default inner box */
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-block;
+}
+.side-box .accordion-button:not(.collapsed)::before {
+  content: '×';
+}
+
+
+/* Accordion body spacing and visual separators when opened */
+.side-box .accordion-collapse .accordion-body {
+  padding-top: 1.4rem;
+  padding-bottom: 2rem;
+  padding-right: 3rem; /* keep content away from right edge */
+  padding-left: 0; /* remove left padding so inner box aligns with separator */
+}
+
+
+/* Inner content box — remove double border and match example spacing
+   (single consolidated block) */
+.side-box .accordion-body > .p-3.border {
+  box-sizing: border-box;
+  border: none;
+  padding: 0 !important; /* override bootstrap utility padding */
+  /* place the left edge of the inner box where the separator starts */
+  margin-left: 2rem;
+  padding-left: 0;
+  width: calc(100% - 2rem);
+}
+
+@media (min-width: 992px) {
+  .side-box .accordion-body > .p-3.border {
+    margin-left: 2.5rem;
+    padding-left: 0;
+    width: calc(100% - 2.5rem);
+  }
+}
+
+/* Align special-container content to match previous inner-box inset */
+.side-box .special-container {
+  box-sizing: border-box;
+  padding: 0 !important;
+  margin: 0; /* reset default */
+  width: 100%;
+}
+
+@media (max-width: 991px) {
+  .side-box .special-container {
+    /* same inset used previously for mobile */
+    margin: 0 1.5rem;
+    width: calc(100% - 3rem);
+  }
+}
+
+@media (min-width: 992px) {
+  .side-box .special-container {
+    /* same desktop inset as the previous implementation */
+    margin-left: 2.5rem;
+    width: calc(100% - 2.5rem);
+  }
+}
+
+/* Unit list styling: vertical list with consistent spacing between unit blocks */
+.side-box .unit-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; /* vertical spacing between units (increased) */
+}
+.side-box .unit-block {
+  margin: 0; /* reset */
+  padding: 0.5rem 0; /* increased internal vertical padding */
+}
+
+/* Unit block typography and layout */
+.unit-year {
+  font-family: 'TrizP-Light', Arial, sans-serif;
+  font-size: 0.95rem;
+  margin-bottom: 0.25rem;
+}
+.unit-title {
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+.unit-items {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0.6rem 0;
+}
+.unit-items li {
+  position: relative;
+  padding-left: 1.6rem;
+  margin-bottom: 0.2rem;
+}
+.unit-items li::before {
+  content: attr(data-marker);
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-weight: 700;
+}
+.unit-cta {
+  display: inline-block;
+  color: #b33;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+/* Refined marker and typography styles to match reference */
+.unit-year { color: #222; font-size: 1.25rem; font-weight: 700; font-family: 'TrizP-Light', Arial, sans-serif; }
+.unit-title { font-family: 'Turnery', Arial, sans-serif; font-size: 1rem; line-height: 1.2; font-weight: 700; }
+.unit-items li::before { font-family: 'TrizP-Light', Arial, sans-serif; color: #111; width: 1.2rem; display: inline-block; text-align: left; }
+.unit-items li { font-family: 'Basier-Circle-Regular', Arial, sans-serif; color: #111; }
+.unit-cta { color: #b33; margin-top: 0.25rem; }
+.unit-cta:hover { text-decoration: underline; }
+
+/* Two-column layout for the first accordion item */
+.two-col-wrapper {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+.two-col-wrapper .col {
+  flex: 1 1 50%;
+  min-width: 0; /* allow flex children to shrink to avoid forcing layout wider than container */
+}
+.two-col-wrapper .col-title {
+  text-align: center;
+  font-weight: 700;
+  margin: 5rem 0; /* doubled vertical spacing above and below title */
+  font-family: 'Turnery', Arial, sans-serif;
+  font-size: 0.95rem; /* slightly smaller */
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+/* vertical separator between columns */
+.two-col-wrapper .col-right {
+  position: relative;
+}
+.two-col-wrapper .col-right::before {
+  content: '';
+  position: absolute;
+  left: -1rem; /* place the line slightly inside the gutter between columns */
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: #d9d9d9;
+}
+
+@media (max-width: 991px) {
+  .two-col-wrapper {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .two-col-wrapper .col-right::before {
+    display: none; /* remove vertical separator on mobile when stacked */
+  }
+}
+
+/* Textos page: show accordion only below lg, two-column grid on lg+ */
+.textos-accordion {
+  display: block;
+}
+.two-col-textos {
+  display: none;
+}
+
+@media (min-width: 992px) {
+  .textos-accordion { display: none; }
+  .two-col-textos {
+    display: flex;
+    gap: 2.5rem;
+    align-items: flex-start;
+  }
+  .two-col-textos .col-left,
+  .two-col-textos .col-right {
+    flex: 1 1 50%;
+    min-width: 0;
+  }
+  .two-col-textos .col-right {
+    position: relative;
+  }
+  .two-col-textos .col-right::before {
+    content: '';
+    position: absolute;
+    left: -1.25rem;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: #d9d9d9;
+  }
+  .two-col-textos .col-title {
+    text-align: center;
+    margin: 5rem 0; /* doubled vertical spacing above and below title */
+    font-family: 'Turnery', Arial, sans-serif;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .two-col-textos .legend-small {
+    text-align: center;
+    font-size: 0.82rem;
+    color: #666;
+    margin-bottom: 1rem;
+  }
+  .two-col-textos .unit-list { gap: 1.25rem; }
+  .unit-sub { margin: 0.15rem 0 0.35rem 0; color: #666; font-size: 0.95rem; }
+  .unit-author { font-size: 0.95rem; color: #111; margin-bottom: 0.2rem; }
+}
+
+/* Accordion legend shown only when the panel is open (legend is inside the collapse) */
+.accordion-legend {
+  text-align: center;
+  font-size: 0.85rem;
+  color: #222;
+  margin-bottom: 0.6rem;
+  display: none; /* hidden by default; shown when header is active */
+  font-family: 'Basier-Circle-Regular', Arial, sans-serif;
+}
+
+@media (max-width: 991px) {
+  .accordion-legend {
+    /* smaller negative offset on mobile where headers are less tall */
+    font-size: 0.82rem;
+  }
+}
+
+/* Show legend when the accordion header button is in the open state */
+.accordion-header .accordion-button:not(.collapsed) ~ .accordion-legend {
+  display: block;
+  margin-top: 0.4rem; /* small gap from the title */
+}
+
+/* Remove outer rounded box and button background to match the example */
+.side-box .accordion {
+  border-radius: 0;
+  border: none;
+  background: transparent;
+  margin: 0;
+  width: 100%; /* keep accordion occupying normal layout width to avoid wrapping */
+  position: static; /* remove visual offsetting to keep normal grid flow */
+  overflow: visible; /* allow pseudo-elements to extend past the container if needed */
+}
+
+/* Prevent side-box content from creating horizontal scroll (safety against pseudo-element overflow) */
+.side-box {
+  overflow-x: hidden;
+}
+
+/* Defensive: ensure children and pseudo-elements inside side-box don't cause horizontal overflow */
+.side-box, .side-box * {
+  box-sizing: border-box;
+}
+.side-box::before,
+.side-box::after {
+  max-width: 100%;
+}
+
+@media (min-width: 992px) {
+  .side-box .accordion {
+    width: 100%;
+  }
+}
+.side-box .accordion .accordion-item {
+  border-left: none;
+  border-right: none;
+  border-bottom: none; /* keep top border if present (we draw separators with sibling selector) */
+}
+/* ensure each accordion item can form a stacking context so we can raise the open item above neighbors
+   this prevents the left corner / symbol being visually covered during the open animation */
+.side-box .accordion .accordion-item {
+  position: relative;
+  z-index: 0;
+}
+
+/* when an item is opening/open, bring its header and collapse above adjacent items */
+.side-box .accordion-button:not(.collapsed),
+.side-box .accordion-item .accordion-collapse.show,
+.side-box .accordion-item .accordion-collapse.opening {
+  position: relative; /* needed for z-index to take effect */
+  z-index: 9999; /* bring opening panel clearly above other elements */
+  transform: translateZ(0); /* create layer for smoother compositing */
+  overflow: visible !important; /* allow content to be visible during transition */
+}
+
+/* when a panel is closing, keep it in the normal stacking order and clip overflow so
+   the content doesn't remain visible during the close animation */
+.side-box .accordion-item .accordion-collapse.closing {
+  position: relative;
+  z-index: 0;
+  overflow: hidden !important;
+}
+
+/* Ensure ancestors don't clip the opening panel (do NOT force .side-box visible; that causes horizontal scroll)
+   Keep ancestor containers visible so opening panels can escape, but allow .side-box to control its own overflow. */
+.mt-4,
+.mt-4 .row.gx-3,
+.mt-4 .row.gx-3 > [class*="col-"] {
+  overflow: visible !important;
+}
+.side-box .accordion-button {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none;
+  /* ensure header text stays inset from the viewport by using the same edge offset */
+  padding-left: calc(2rem + 0.5rem);
+  padding-right: calc(2rem + 1rem); /* increase right padding so header text doesn't hug edge */
+  /* allow wrapping on small screens to avoid pushing the column out of the row */
+  white-space: normal;
+  box-sizing: border-box;
+}
+.side-box .accordion-button:focus {
+  box-shadow: none !important;
+}
+
+/* Force accordion header button text to black inside side-box */
+.side-box .accordion-button,
+.side-box .accordion-button:focus,
+.side-box .accordion-button:hover,
+.side-box .accordion-button:not(.collapsed) {
+  color: #111 !important;
+}
+
+/* Mobile / below lg adjustments: extend separators to edges and center titles with
+   equal left/right symbol margins. These rules only apply for viewports < 992px. */
+@media (max-width: 991px) {
+  /* separators run edge-to-edge */
+  .side-box .accordion-item + .accordion-item::before {
+    left: 0;
+    right: 0;
+  }
+
+  /* make symbols have equal inset from edges */
+  .side-box .accordion-button::before {
+    left: 1.5rem;
+  }
+  .side-box .accordion-button::after {
+    right: 1.5rem;
+  }
+
+  /* reduce header padding so title stays visually centered between symbols */
+  .side-box .accordion-button {
+    padding-left: calc(1.5rem + 0.5rem);
+    padding-right: calc(1.5rem + 1rem);
+    white-space: normal;
+  }
+
+  /* inner content should use full width on small screens */
+  .side-box .accordion-body > .p-3.border {
+    /* inset the inner box so it sits within the page frame while separators
+       remain edge-to-edge. Use same 1.5rem inset as the symbols. */
+    margin: 0 1.5rem;
+    width: calc(100% - 3rem);
+    padding-left: 0; /* internal padding can be added here if needed */
+    padding-right: 0;
+  }
+
+  /* make collapse panels visible above neighbors and prevent clipping on mobile */
+  .side-box .accordion-item .accordion-collapse {
+    overflow: visible !important;
+    position: relative;
+    z-index: 9999;
+  }
+
+  .side-box .accordion-collapse .accordion-body {
+    overflow: visible !important;
+    padding-top: 1.5rem;
+    padding-bottom: 2rem;
+  }
+
+  /* Ensure accordion items and their content form visible stacking contexts above separators */
+  .side-box .accordion,
+  .side-box .accordion .accordion-item {
+    overflow: visible !important;
+    position: relative;
+    z-index: 0;
+  }
+
+  .side-box .accordion-item .accordion-collapse.show,
+  .side-box .accordion-item .accordion-collapse.opening {
+    z-index: 10002 !important;
+    position: relative !important;
+    overflow: visible !important;
+  }
+
+  .side-box .accordion-body > .p-3.border {
+    position: relative;
+    z-index: 10003;
+    margin-top: 0.5rem;
+  }
+
+  /* keep separators visually behind everything */
+  .side-box .accordion-item + .accordion-item::before {
+    z-index: 0;
+  }
+
+  /* ensure accordion container doesn't add side padding that would offset the line */
+  .side-box .accordion {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /* remove the default padding from the side-box itself on small screens */
+  .side-box {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  /* columns have internal padding from bootstrap gutters; remove it so
+     the accordion column touches the viewport edges on small screens */
+  .mt-4 .row.gx-3 > [class*="col-"] {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  /* remove outer page wrapper horizontal padding on small screens so the
+     separator lines can run to the viewport edges (px-2 is applied in HTML) */
+  .mt-4 {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .side-box .accordion-button::after {
+    right: 3rem;
+  }
+  .side-box .accordion-button::before {
+    left: 2.5rem;
+  }
+  .side-box .accordion-button {
+    padding-left: calc(3rem + 0.5rem);
+    padding-right: calc(3rem + 1rem);
+    /* keep titles on a single line for lg+ where there is more horizontal room */
+    white-space: nowrap;
+  }
+}
+
+
+/* Increase spacing between the left BIO box and the right accordion.
+   Targets the specific top-level row on the about page (uses existing gx-3 class).
+   Adds a larger horizontal gap on md+ and a comfortable vertical gap on small screens. */
+.mt-4 .row.gx-3 {
+  column-gap: 2rem; /* horizontal spacing between columns on small screens */
+  row-gap: 1.5rem;  /* vertical spacing when columns stack */
+}
+
+@media (min-width: 992px) {
+  .mt-4 .row.gx-3 {
+    column-gap: 3.5rem; /* larger horizontal separation for lg+ */
+    row-gap: 0; /* no extra vertical gap when side-by-side */
+    flex-wrap: nowrap; /* prevent the row from wrapping into multiple lines */
+    align-items: flex-start; /* align columns to the top so accordion sits beside BIO */
+  }
+
+  /* allow columns to shrink below their content width so long words don't force wrapping */
+  .mt-4 .row.gx-3 > [class*="col-"] {
+    min-width: 0;
+  }
+}
+
 
 .post-meta,
 .post-header .year-line-container {
@@ -470,6 +1199,12 @@ a:focus {
   
 }
 
+/* Last-resort: prevent any residual horizontal scrolling from pseudo-elements or small miscalculations
+   This keeps the page visually stable across breakpoints. Remove only if you prefer to debug exact root cause. */
+html, body {
+  overflow-x: hidden;
+}
+
 /* ==========================================================================
    CRÉDITOS
 ========================================================================== */
@@ -482,4 +1217,13 @@ a:focus {
 
 .credit-item {
   margin: 18px 0;
+}
+
+/* Make any p-3.border inside the side-box accordion visually borderless
+   (this overrides the Bootstrap .border utility while keeping padding) */
+.side-box .accordion-body > .p-3.border {
+  border: 0 !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+  background: transparent !important;
 }
