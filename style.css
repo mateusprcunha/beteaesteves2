@@ -155,6 +155,11 @@ select, textarea {
 .nav-block.brand { justify-content: flex-start; padding-left: 0; }
 .nav-block.lang-block { justify-content: flex-end; padding-right: 0; margin-left: auto; }
 
+/* Hide the language selector (PT / ENG) on md and smaller (<= 767.98px) */
+@media (max-width: 767.98px) {
+  .nav-block.lang-block { display: none !important; }
+}
+
 .email-header {
   font-size: 0.95rem;
   color: #555;
@@ -217,6 +222,11 @@ select, textarea {
      email inline on lg+ */
   .nav-block.email-block {
     display: none !important;
+  }
+
+  /* Align the mobile menu toggle (three-dot button) to the far right */
+  .nav-block.mobile-menu-block {
+    margin-left: auto;
   }
 }
 
