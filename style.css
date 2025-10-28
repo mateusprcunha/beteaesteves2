@@ -96,6 +96,13 @@ select, textarea {
   border: none;
   font-size: 1.6rem;
   cursor: pointer;
+  color: #111 !important;
+  -webkit-appearance: none;
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  vertical-align: baseline;
+  margin: 0;
+  padding: 0;
 }
 
 /* Vertical center menu list */
@@ -290,10 +297,11 @@ select, textarea {
 .custom-toggler-icon .dot { left: 20px; }
 .custom-toggler-icon::after { left: 40px; }
 
-/* Force black color on mobile toggle buttons and back-to-top, especially for iOS/Safari */
+/* Force black color on mobile toggle buttons, back-to-top and mobile-close, especially for iOS/Safari */
 .navbar-toggler,
 .mobile-nav-toggle,
-#back-to-top {
+#back-to-top,
+.mobile-nav-menu .mobile-close {
   color: #111 !important;
   -webkit-appearance: none !important;
   -moz-appearance: none !important;
@@ -310,7 +318,8 @@ select, textarea {
 @supports (-webkit-overflow-scrolling: touch) {
   .navbar-toggler,
   .mobile-nav-toggle,
-  #back-to-top {
+  #back-to-top,
+  .mobile-nav-menu .mobile-close {
     color: #111 !important;
     background-color: transparent !important;
   }
